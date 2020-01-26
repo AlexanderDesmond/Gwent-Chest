@@ -1,6 +1,7 @@
 <div class="cards leaders">
   <ng-container *ngFor="let key of cardKeys">
-    <ng-container *ngIf="cards[key].cardType === 'Leader'">
+    <!-- <ng-container *ngIf="cards[key].cardType === 'Leader'"> -->
+    <ng-container>
       <app-card
         [card]="cards[key]"
         [key]="key"

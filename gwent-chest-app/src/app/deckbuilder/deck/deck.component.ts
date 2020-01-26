@@ -22,7 +22,5 @@ export class DeckComponent implements OnInit {
 
   ngOnInit() {
     this.cardService.currentCard.subscribe(card => (this.card = card));
-
-    console.log("current card: ", this.card);
   }
 }

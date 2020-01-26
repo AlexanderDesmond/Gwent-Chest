@@ -5,7 +5,7 @@ import { BehaviorSubject } from "rxjs";
   providedIn: "root"
 })
 export class CardService {
-  private cardSource = new BehaviorSubject<object>({});
+  private cardSource = new BehaviorSubject<object>(null);
   currentCard = this.cardSource.asObservable();
 
   constructor() {}
