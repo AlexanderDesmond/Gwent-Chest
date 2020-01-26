@@ -1,0 +1,31 @@
+<div class="cards leaders">
+  <ng-container *ngFor="let key of cardKeys">
+    <ng-container *ngIf="cards[key].cardType === 'Leader'">
+      <app-card
+        [card]="cards[key]"
+        [key]="key"
+        (click)="selectCard(cards[key])"
+      ></app-card>
+    </ng-container>
+  </ng-container>
+</div>
+<hr />
+<!--
+<div class="cards normal-cards">
+  <ng-container *ngFor="let key of cardKeys">
+    <ng-container
+      *ngIf="
+        cards[key].cardType !== 'Leader' &&
+        cards[key].cardType !== 'Strategem' &&
+        cards[key].provision !== 0
+      "
+    >
+      <app-card
+        [card]="cards[key]"
+        [key]="key"
+        (click)="selectCard(key)"
+      ></app-card>
+    </ng-container>
+  </ng-container>
+</div>
+-->
