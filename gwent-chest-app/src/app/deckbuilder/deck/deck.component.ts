@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { CardService } from "src/app/core/card.service";
+import { CardService } from "src/app/core/services/card.service";
 
 @Component({
   selector: "app-deck",

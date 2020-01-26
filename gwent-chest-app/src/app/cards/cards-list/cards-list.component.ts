@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 // Testing
 import Cards from "../../../assets/gwent-data-release/cards.json";
 
-import { CardService } from "src/app/core/card.service";
+import { CardService } from "src/app/core/services/card.service";
 
 @Component({
   selector: "app-cards-list",
