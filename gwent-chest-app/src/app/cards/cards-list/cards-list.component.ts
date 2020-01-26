@@ -45,8 +45,8 @@ export class CardsListComponent implements OnInit {
     ) {
       this.deck.cards.push(card);
     }
-    console.log(this.deck);
 
     this.cardService.addCard(card);
+    this.deckService.buildDeck(this.deck);
   }
 }

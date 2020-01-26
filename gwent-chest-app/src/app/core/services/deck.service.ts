@@ -16,4 +16,8 @@ export class DeckService {
   deck: Deck;
 
   constructor() {}
+
+  buildDeck(deck: Deck) {
+    console.log("Deck: ", deck);
+  }
 }
