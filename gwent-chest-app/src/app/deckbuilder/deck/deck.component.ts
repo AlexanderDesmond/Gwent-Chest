@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 
 import { CardService } from "src/app/core/services/card.service";
+import { Deck } from "src/app/core/models/deck";
+import { DeckService } from "src/app/core/services/deck.service";
 
 @Component({
   selector: "app-deck",
@@ -16,11 +18,16 @@ export class DeckComponent implements OnInit {
   provisions: number;
   usedProvisions: number = 0;
 
+  deck: Deck;
   card: object;
 
-  constructor(private cardService: CardService) {}
+  constructor(
+    private deckService: DeckService,
+    private cardService: CardService
+  ) {}
 
   ngOnInit() {
+    this.deckService.currentDeck.subscribe(deck => (this.deck = deck));
     this.cardService.currentCard.subscribe(card => (this.card = card));
   }
 }

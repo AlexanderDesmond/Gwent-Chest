@@ -13,11 +13,15 @@ export class DeckService {
   });
   currentDeck = this.deckSource.asObservable();
 
-  deck: Deck;
-
   constructor() {}
 
   buildDeck(deck: Deck) {
+    this.deckSource.next(deck);
+
     console.log("Deck: ", deck);
+  }
+
+  get deck() {
+    return this.currentDeck;
   }
 }

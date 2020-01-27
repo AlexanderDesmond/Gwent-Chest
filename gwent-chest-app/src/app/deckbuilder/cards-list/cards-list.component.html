@@ -1,0 +1,82 @@
+<div class="deckbuilder-container">
+  <div class="deck-container">
+    <div class="deck-info">
+      <div class="cards2">
+        <span>Cards</span>
+        <span>{{ this.cardCount }} / {{ this.minCards }} MIN</span>
+      </div>
+      <div class="units">
+        <span>Units</span>
+        <span>{{ this.unitCount }} / {{ this.minUnits }} MIN</span>
+      </div>
+      <div class="provisions">
+        <span>Provisions</span>
+        <span>{{ this.usedProvisions }} / {{ this.provisions }} MAX</span>
+      </div>
+    </div>
+    <div class="leader-ability" *ngIf="this.deck.leader">
+      <div class="leader-ability-preview">
+        <span>
+          {{ this.deck.leader.name["en-US"] }}
+        </span>
+        <span>
+          {{ this.deck.leader.provisionBoost }}
+        </span>
+        <div class="card-tooltip">
+          <img [src]="this.deck.leader.image.thumbnail" alt="" />
+        </div>
+      </div>
+    </div>
+    <div class="deck-card-list" *ngIf="this.deck.cards">
+      <ng-container *ngFor="let card of this.deck.cards">
+        <span class="card-preview">
+          {{ card.strength + card.name["en-US"] + card.provision }}
+        </span>
+      </ng-container>
+      <div class="deck-card"></div>
+    </div>
+  </div>
+
+  <div class="cards-list-container">
+    <div class="cards leaders">
+      <ng-container *ngFor="let key of cardKeys">
+        <ng-container
+          *ngIf="
+            cards[key].cardType === 'Leader' &&
+            (!this.initialSelection || cards[key].faction === this.deck.faction)
+          "
+        >
+          <app-card
+            [card]="cards[key]"
+            [key]="key"
+            (click)="selectCard(cards[key], key)"
+            (click)="addKey(key)"
+          ></app-card>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <hr />
+
+    <div class="cards normal-cards" *ngIf="this.deck.leader">
+      <ng-container *ngFor="let key of cardKeys">
+        <ng-container
+          *ngIf="
+            cards[key].cardType !== 'Leader' &&
+            cards[key].cardType !== 'Strategem' &&
+            cards[key].provision !== 0 &&
+            (cards[key].faction === this.deck.faction ||
+              cards[key].secondaryFaction === this.deck.faction ||
+              cards[key].faction === 'Neutral')
+          "
+        >
+          <app-card
+            [card]="cards[key]"
+            [key]="key"
+            (click)="selectCard(cards[key], key)"
+          ></app-card>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

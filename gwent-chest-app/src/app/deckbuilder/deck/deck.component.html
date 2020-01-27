@@ -15,8 +15,8 @@
       <span>{{ this.usedProvisions }} / {{ this.baseProvisions }} MAX</span>
     </div>
   </div>
-  <div class="leader-ability">
-    <span>Leader ability stuff goes here.</span>
+  <div class="leader-ability" *ngIf="this.deck.leader">
+    <span>Leader Ability: {{ this.deck.leader.name["en-US"] }}</span>
   </div>
   <div class="deck-card-list">
     <div class="deck-card"></div>
