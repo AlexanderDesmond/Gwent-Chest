@@ -45,30 +45,44 @@ export class CardsListComponent implements OnInit {
   }
 
   selectCard(card, key) {
-    if (this.deck.leader === null && card.cardType === "Leader") {
-      this.deck.leader = card;
+    if (card.cardType === "Leader") {
+      this.addLeader(card, key);
+    } else if (
+      this.deck.faction === card.faction ||
+      this.deck.faction === card.secondaryFaction ||
+      card.faction === "Neutral"
+    ) {
+      this.addCard(card);
+    }
+
+    this.cardService.addCard(card);
+    this.deckService.buildDeck(this.deck);
+  }
+
+  addLeader(card, key) {
+    if (this.deck.leader === null) {
       this.deck.faction = card.faction;
+      this.deck.leader = card;
       this.deck.cards = [];
-      this.initialSelection = true;
 
       this.deck.leader.image = { low: "", medium: "", thumbnail: "" };
       this.deck.leader.image.thumbnail = card.variations[key + "00"].art.low;
 
       this.provisions += card.provisionBoost;
-    } else if (this.deck.leader !== null && card.cardType === "Leader") {
+
+      this.initialSelection = true;
+    } else {
       this.deck.leader = card;
 
       this.deck.leader.image = { low: "", medium: "", thumbnail: "" };
       this.deck.leader.image.thumbnail = card.variations[key + "00"].art.low;
 
       this.provisions = this.baseProvisions + card.provisionBoost;
-    } else if (
-      this.deck.leader !== null &&
-      card.cardType !== "Leader" &&
-      (this.deck.faction === card.faction ||
-        this.deck.faction === card.secondaryFaction ||
-        card.faction === "Neutral")
-    ) {
+    }
+  }
+
+  addCard(card) {
+    if (!this.checkDuplicates(card)) {
       this.deck.cards.push(card);
 
       this.cardCount++;
@@ -77,9 +91,29 @@ export class CardsListComponent implements OnInit {
       }
       this.usedProvisions += card.provision;
     }
+  }
 
-    this.cardService.addCard(card);
-    this.deckService.buildDeck(this.deck);
+  checkDuplicates(card): boolean {
+    let isDuplicate: boolean = false;
+    let copyCounter: number = 1;
+
+    for (let deckCard of this.deck.cards) {
+      if (card.type === "Gold") {
+        if (card.name["en-US"] === deckCard.name["en-US"]) {
+          return true;
+        }
+      } else if (card.type === "Bronze") {
+        if (card.name["en-US"] === deckCard.name["en-US"]) {
+          if (copyCounter >= 2) {
+            return true;
+          }
+
+          ++copyCounter;
+        }
+      }
+    }
+
+    return isDuplicate;
   }
 
   addKey(key) {
