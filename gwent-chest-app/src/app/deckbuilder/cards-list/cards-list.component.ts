@@ -66,7 +66,7 @@ export class CardsListComponent implements OnInit {
       this.deck.cards = [];
 
       this.deck.leader.image = { low: "", medium: "", thumbnail: "" };
-      this.deck.leader.image.thumbnail = card.variations[key + "00"].art.low;
+      this.deck.leader.image.thumbnail = card.variations[key + "00"].art.medium;
 
       this.provisions += card.provisionBoost;
 
@@ -75,7 +75,7 @@ export class CardsListComponent implements OnInit {
       this.deck.leader = card;
 
       this.deck.leader.image = { low: "", medium: "", thumbnail: "" };
-      this.deck.leader.image.thumbnail = card.variations[key + "00"].art.low;
+      this.deck.leader.image.thumbnail = card.variations[key + "00"].art.medium;
 
       this.provisions = this.baseProvisions + card.provisionBoost;
     }
