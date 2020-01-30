@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import Cards from "../../../assets/gwent-data-release/cards.json";
 import { CardService } from "src/app/core/services/card.service";
 import { Deck } from "src/app/core/models/deck.js";
+import { Card } from "src/app/core/models/card";
 import { DeckService } from "src/app/core/services/deck.service.js";
 
 @Component({
@@ -20,6 +21,7 @@ export class CardsListComponent implements OnInit {
   initialSelection: boolean = false;
 
   key;
+  keys = [];
 
   //stuff
   minCards: number = 25;
@@ -52,7 +54,7 @@ export class CardsListComponent implements OnInit {
       this.deck.faction === card.secondaryFaction ||
       card.faction === "Neutral"
     ) {
-      this.addCard(card);
+      this.addCard(card, key);
     }
 
     this.cardService.addCard(card);
@@ -68,6 +70,12 @@ export class CardsListComponent implements OnInit {
       this.deck.leader.image = { low: "", medium: "", thumbnail: "" };
       this.deck.leader.image.thumbnail = card.variations[key + "00"].art.medium;
 
+      this.deck.images = [];
+      this.deck.images.unshift({
+        card: card.name["en-US"],
+        image: card.variations[key + "00"].art.medium
+      });
+
       this.provisions += card.provisionBoost;
 
       this.initialSelection = true;
@@ -77,11 +85,19 @@ export class CardsListComponent implements OnInit {
       this.deck.leader.image = { low: "", medium: "", thumbnail: "" };
       this.deck.leader.image.thumbnail = card.variations[key + "00"].art.medium;
 
+      this.deck.images.shift();
+      this.deck.images.unshift({
+        card: card.name["en-US"],
+        image: card.variations[key + "00"].art.medium
+      });
+
       this.provisions = this.baseProvisions + card.provisionBoost;
     }
   }
 
-  addCard(card) {
+  addCard(card, key) {
+    this.getKey(card.name["en-US"]);
+
     if (!this.checkDuplicates(card)) {
       this.deck.cards.push(card);
 
@@ -89,12 +105,17 @@ export class CardsListComponent implements OnInit {
       if (card.cardType === "Unit") {
         this.unitCount++;
       }
+
+      this.deck.images.push({
+        card: card.name["en-US"],
+        image: card.variations[key + "00"].art.medium
+      });
+
       this.usedProvisions += card.provision;
     }
   }
 
   checkDuplicates(card): boolean {
-    let isDuplicate: boolean = false;
     let copyCounter: number = 1;
 
     for (let deckCard of this.deck.cards) {
@@ -113,22 +134,33 @@ export class CardsListComponent implements OnInit {
       }
     }
 
-    return isDuplicate;
+    return false;
+  }
+
+  getPreviewImage(name) {
+    for (let image in this.deck.images) {
+      let index = parseInt(image);
+      if (this.deck.images[index].card === name) {
+        return this.deck.images[index].image;
+      }
+    }
+  }
+
+  getCardPreviewStyles(card) {
+    return {
+      "background-image":
+        "url(" + this.getPreviewImage(card.name["en-US"]) + ")"
+    };
   }
 
   addKey(key) {
     this.key = key;
 
+    this.keys.push(key);
+
     console.log("Current Key: ", this.key);
+    console.log("Keys:", this.keys);
   }
 
-  getKey(name) {
-    console.log(this.cardKeys);
-
-    for (let key in this.cardKeys) {
-      if (this.cards[key].name["en-US"] === name) {
-        this.key = key;
-      }
-    }
-  }
+  getKey(name) {}
 }

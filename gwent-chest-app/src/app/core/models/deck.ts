@@ -17,6 +17,12 @@ export interface Deck {
     };
     provisionBoost: number;
   };
-  cards;
-  //cards: Card[];
+  //cards;
+  cards: any[];
+  images: Image[];
+}
+
+export interface Image {
+  card: string;
+  image: string;
 }

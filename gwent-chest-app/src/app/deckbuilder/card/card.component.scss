@@ -22,3 +22,7 @@
 .card-tooltip > span {
   display: block;
 }
+
+.card:hover {
+  transform: scale(1.05);
+}

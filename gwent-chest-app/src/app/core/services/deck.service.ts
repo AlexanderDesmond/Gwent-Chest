@@ -9,7 +9,8 @@ export class DeckService {
   private deckSource = new BehaviorSubject<Deck>({
     faction: null,
     leader: null,
-    cards: null
+    cards: null,
+    images: null
   });
   currentDeck = this.deckSource.asObservable();
 
