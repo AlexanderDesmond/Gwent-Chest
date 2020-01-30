@@ -39,7 +39,11 @@
       <ng-container *ngFor="let card of this.deck.cards">
         <div class="card-preview">
           <span>
-            {{ card.strength + card.name["en-US"] + card.provision }}
+            {{
+              (card.strength !== 0 ? card.strength : "*") +
+                card.name["en-US"] +
+                card.provision
+            }}
           </span>
           <div class="card-tooltip">
             <img [src]="" alt="" />
