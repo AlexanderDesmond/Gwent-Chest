@@ -1,3 +1,11 @@
+<div
+  *ngIf="this.deck.leader"
+  class="test"
+  [ngStyle]="{
+    'background-image': 'url(' + this.deck.leader.image.thumbnail + ')'
+  }"
+></div>
+
 <div class="deckbuilder-container">
   <div class="deck-container">
     <div class="deck-info">
@@ -29,9 +37,14 @@
     </div>
     <div class="deck-card-list" *ngIf="this.deck.cards">
       <ng-container *ngFor="let card of this.deck.cards">
-        <span class="card-preview">
-          {{ card.strength + card.name["en-US"] + card.provision }}
-        </span>
+        <div class="card-preview">
+          <span>
+            {{ card.strength + card.name["en-US"] + card.provision }}
+          </span>
+          <div class="card-tooltip">
+            <img [src]="" alt="" />
+          </div>
+        </div>
       </ng-container>
       <div class="deck-card"></div>
     </div>

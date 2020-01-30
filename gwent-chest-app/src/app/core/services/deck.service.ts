@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Deck } from "../models/deck";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, ReplaySubject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -22,6 +22,6 @@ export class DeckService {
   }
 
   get deck() {
-    return this.currentDeck;
+    return this.deckSource.asObservable();
   }
 }

@@ -80,8 +80,6 @@ export class CardsListComponent implements OnInit {
 
     this.cardService.addCard(card);
     this.deckService.buildDeck(this.deck);
-
-    //this.getKey(card);
   }
 
   addKey(key) {

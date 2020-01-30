@@ -1,7 +1,11 @@
+import { Card } from "./card";
+
 export interface Deck {
   faction: string;
   leader: {
-    name: [];
+    name: {
+      "en-US": string;
+    };
     image: {
       low: string;
       medium: string;
@@ -9,5 +13,6 @@ export interface Deck {
     };
     provisionBoost: number;
   };
-  cards: object[];
+  cards;
+  //cards: Card[];
 }
