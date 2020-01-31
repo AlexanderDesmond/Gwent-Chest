@@ -3,15 +3,24 @@
     <div class="deck-info">
       <div class="cards2">
         <span>Cards</span>
-        <span>{{ this.cardCount }} / {{ this.minCards }} MIN</span>
+        <span
+          >{{ this.deckInfo.cardCount }} /
+          {{ this.deckInfo.minCards }} MIN</span
+        >
       </div>
       <div class="units">
         <span>Units</span>
-        <span>{{ this.unitCount }} / {{ this.minUnits }} MIN</span>
+        <span
+          >{{ this.deckInfo.unitCount }} /
+          {{ this.deckInfo.minUnits }} MIN</span
+        >
       </div>
       <div class="provisions">
         <span>Provisions</span>
-        <span>{{ this.usedProvisions }} / {{ this.provisions }} MAX</span>
+        <span
+          >{{ this.deckInfo.usedProvisions }} /
+          {{ this.deckInfo.provisions }} MAX</span
+        >
       </div>
     </div>
     <div class="leader-ability" *ngIf="this.deck.leader">
@@ -90,7 +99,6 @@
             [card]="cards[key]"
             [key]="key"
             (click)="selectCard(cards[key], key)"
-            (click)="addKey(key)"
           ></app-card>
         </ng-container>
       </ng-container>

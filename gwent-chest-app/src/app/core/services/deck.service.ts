@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Deck } from "../models/deck";
-import { BehaviorSubject, ReplaySubject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
