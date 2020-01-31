@@ -21,25 +21,25 @@ export class CardService {
 
     switch (card.faction) {
       case "Neutral":
-        colour = "SaddleBrown";
+        colour = "rgb(40, 30, 15)";
         break;
       case "Northern Realms":
-        colour = "blue";
+        colour = "rgb(5, 25, 70)";
         break;
       case "Syndicate":
-        colour = "orange";
+        colour = "rgb(55, 20, 5)";
         break;
       case "Skellige":
-        colour = "purple";
+        colour = "rgb(30, 30, 50)";
         break;
       case "Scoiatael":
-        colour = "green";
+        colour = "rgb(45, 45, 10)";
         break;
       case "Nilfgaard":
-        colour = "black";
+        colour = "rgb(15, 20, 20)";
         break;
       case "Monster":
-        colour = "red";
+        colour = "rgb(64, 12, 4)";
         break;
       default:
         colour = "white";
