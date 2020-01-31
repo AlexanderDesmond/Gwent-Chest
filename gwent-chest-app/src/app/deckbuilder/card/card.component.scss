@@ -10,10 +10,18 @@
     z-index: 2;
     display: none;
 
-    background-color: #f0f0f0;
+    background-color: white;
 
-    .name {
-      font-weight: bold;
+    .card-title {
+      color: white;
+
+      .name {
+        font-weight: bold;
+      }
+
+      span {
+        display: block;
+      }
     }
   }
 }

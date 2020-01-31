@@ -31,14 +31,12 @@
         }"
         style="color: gold;"
       >
-        <div class="card-info">
-          <span>
-            {{ this.deck.leader.name["en-US"] }}
-          </span>
-          <span>
-            {{ this.deck.leader.provisionBoost }}
-          </span>
-        </div>
+        <span class="leader-name">
+          {{ this.deck.leader.name["en-US"] }}
+        </span>
+        <span class="leader-provisions">
+          {{ this.deck.leader.provisionBoost }}
+        </span>
         <div class="card-tooltip">
           <span class="name">{{ this.deck.leader.name["en-US"] }}</span>
           <span>{{ this.deck.leader.cardType }}</span>

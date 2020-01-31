@@ -15,4 +15,37 @@ export class CardService {
 
     console.log("Selected card: ", card);
   }
+
+  getCardColour(card) {
+    let colour;
+
+    switch (card.faction) {
+      case "Neutral":
+        colour = "SaddleBrown";
+        break;
+      case "Northern Realms":
+        colour = "blue";
+        break;
+      case "Syndicate":
+        colour = "orange";
+        break;
+      case "Skellige":
+        colour = "purple";
+        break;
+      case "Scoiatael":
+        colour = "green";
+        break;
+      case "Nilfgaard":
+        colour = "black";
+        break;
+      case "Monster":
+        colour = "red";
+        break;
+      default:
+        colour = "white";
+        break;
+    }
+
+    return colour;
+  }
 }
