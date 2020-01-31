@@ -31,12 +31,14 @@
         }"
         style="color: gold;"
       >
-        <span>
-          {{ this.deck.leader.name["en-US"] }}
-        </span>
-        <span>
-          {{ this.deck.leader.provisionBoost }}
-        </span>
+        <div class="card-info">
+          <span>
+            {{ this.deck.leader.name["en-US"] }}
+          </span>
+          <span>
+            {{ this.deck.leader.provisionBoost }}
+          </span>
+        </div>
         <div class="card-tooltip">
           <span class="name">{{ this.deck.leader.name["en-US"] }}</span>
           <span>{{ this.deck.leader.cardType }}</span>
@@ -51,7 +53,9 @@
           }"
           style="color: gold;"
         >
-          <span>{{ this.deck.strategem.name["en-US"] }}</span>
+          <div class="card-info">
+            <span>{{ this.deck.strategem.name["en-US"] }}</span>
+          </div>
           <div class="card-tooltip">
             <span class="name">{{ this.deck.strategem.name["en-US"] }}</span>
             <span>{{ this.deck.strategem.cardType }}</span>
@@ -67,11 +71,14 @@
           [ngStyle]="getCardPreviewStyles(card)"
           [style.color]="card.type === 'Gold' ? 'gold' : '#cd7f32'"
         >
-          <span>
-            {{ card.strength !== 0 ? card.strength : "⭑" }}
-          </span>
-          <span>{{ card.name["en-US"] }}</span>
-          <span>{{ card.provision }}</span>
+          <div class="card-info">
+            <span>
+              {{ card.strength !== 0 ? card.strength : "⭑" }}
+            </span>
+            <span>{{ card.provision }}</span>
+            <span>{{ card.name["en-US"] }}</span>
+          </div>
+          <div class="duplicate-flag" *ngIf="false">x2</div>
           <div class="card-tooltip">
             <span class="name">{{ card.name["en-US"] }}</span>
             <span>{{ card.cardType }}</span>

@@ -54,8 +54,8 @@
       border: 2px solid;
     }
 
-    .leader-ability-preview > span,
-    .card-preview > span {
+    .card-preview > span,
+    .card-info > span {
       padding: 0 0.5rem 0 0.5rem;
       font-size: 1.6rem;
       //color: gold;
@@ -75,7 +75,7 @@
       margin: 0;
       width: 100%;
       height: 100%;
-      padding: 1rem 0rem 1rem 0rem;
+      //padding: 1rem 0rem 1rem 0rem;
 
       background-repeat: no-repeat;
       background-size: initial;
@@ -84,6 +84,25 @@
       border: 2px solid;
 
       //transition: all 1s;
+
+      .card-info {
+        padding: 1rem 0rem 1rem 0rem;
+      }
+
+      .duplicate-flag {
+        width: 3.2rem;
+        height: 100%;
+        text-align: center;
+        align-self: center;
+
+        margin: -1rem 0 -1rem 0;
+        padding: 1rem 0 1rem 0;
+        position: relative;
+
+        font-size: 1.6rem;
+        background-color: #cd7f32;
+        color: black;
+      }
     }
 
     .card-preview:hover {

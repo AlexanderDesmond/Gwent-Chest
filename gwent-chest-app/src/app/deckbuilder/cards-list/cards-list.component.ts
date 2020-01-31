@@ -32,18 +32,6 @@ export class CardsListComponent implements OnInit {
 
   initialSelection: boolean = false;
 
-  key;
-  keys = [];
-
-  //stuff
-  minCards: number = 25;
-  cardCount: number = 0;
-  minUnits: number = 13;
-  unitCount: number = 0;
-  baseProvisions: number = 150;
-  provisions: number = 0;
-  usedProvisions: number = 0;
-
   constructor(
     private deckbuilderService: DeckbuilderService,
     private cardService: CardService,
@@ -51,7 +39,7 @@ export class CardsListComponent implements OnInit {
   ) {
     this.cardKeys = Object.keys(this.cards);
 
-    this.deckInfo.provisions += this.baseProvisions;
+    this.deckInfo.provisions += this.deckInfo.baseProvisions;
   }
 
   ngOnInit() {
