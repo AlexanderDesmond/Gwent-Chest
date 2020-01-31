@@ -49,6 +49,8 @@ export class CardsListComponent implements OnInit {
   selectCard(card, key) {
     if (card.cardType === "Leader") {
       this.addLeader(card, key);
+    } else if (card.cardType === "Strategem") {
+      this.addStrategem(card, key);
     } else if (
       this.deck.faction === card.faction ||
       this.deck.faction === card.secondaryFaction ||
@@ -93,6 +95,20 @@ export class CardsListComponent implements OnInit {
 
       this.provisions = this.baseProvisions + card.provisionBoost;
     }
+  }
+
+  addStrategem(card, key) {
+    this.deck.strategem = {
+      cardType: card.cardType,
+      faction: card.faction,
+      name: card.name,
+      info: card.info,
+      image: {
+        card: card.name["en-US"],
+        image: card.variations[key + "00"].art.medium
+      }
+    };
+    console.log(this.deck);
   }
 
   addCard(card, key) {

@@ -9,6 +9,7 @@ export class DeckService {
   private deckSource = new BehaviorSubject<Deck>({
     faction: null,
     leader: null,
+    strategem: null,
     cards: null,
     images: null
   });

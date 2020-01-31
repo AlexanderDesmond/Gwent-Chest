@@ -17,6 +17,17 @@ export interface Deck {
     };
     provisionBoost: number;
   };
+  strategem: {
+    cardType: string;
+    faction: string;
+    name: {
+      "en-US": string;
+    };
+    info: {
+      "en-US": string;
+    };
+    image: Image;
+  };
   //cards;
   cards: any[];
   images: Image[];
