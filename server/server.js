@@ -11,11 +11,9 @@ app.use(Cors());
 app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({ extended: true }));
 
-// Import routes.
-const userRoutes = require("./routes/users");
-app.use("/users", userRoutes);
-const deckRoutes = require("./routes/decks");
-app.use("/decks", deckRoutes);
+// Routes
+const routes = require("./routes/routes");
+app.use("/", routes);
 
 // Connect to database.
 Mongoose.connect(
