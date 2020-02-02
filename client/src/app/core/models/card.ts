@@ -16,4 +16,5 @@ export interface Card {
     medium: string;
     thumbnail: string;
   };
+  duplicate: boolean;
 }

@@ -76,7 +76,7 @@
             <span>{{ card.provision }}</span>
             <span>{{ card.name["en-US"] }}</span>
           </div>
-          <div class="duplicate-flag" *ngIf="false">x2</div>
+          <div class="duplicate-flag" *ngIf="card.duplicate">x2</div>
           <div class="card-tooltip">
             <span class="name">{{ card.name["en-US"] }}</span>
             <span>{{ card.cardType }}</span>

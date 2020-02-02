@@ -186,4 +186,8 @@ export class CardsListComponent implements OnInit {
       }
     }
   }
+
+  isDuplicate(card): boolean {
+    return this.deckService.isDuplicate(card);
+  }
 }

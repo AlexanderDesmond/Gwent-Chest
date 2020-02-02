@@ -29,7 +29,7 @@ export interface Deck {
     image: Image;
   };
   //cards;
-  cards: any[];
+  cards: Card[];
   images: Image[];
 }
 

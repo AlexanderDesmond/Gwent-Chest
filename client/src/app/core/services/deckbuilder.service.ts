@@ -102,6 +102,8 @@ export class DeckbuilderService {
 
       this.deckInfo.usedProvisions += card.provision;
     }
+
+    console.log(this.deck.cards);
   }
 
   checkDuplicates(card): boolean {
@@ -114,9 +116,11 @@ export class DeckbuilderService {
         }
       } else if (card.type === "Bronze") {
         if (card.name["en-US"] === deckCard.name["en-US"]) {
-          if (copyCounter >= 2) {
+          if (copyCounter > 1) {
+            deckCard.duplicate = true;
             return true;
           }
+          deckCard.duplicate = true;
 
           ++copyCounter;
         }
