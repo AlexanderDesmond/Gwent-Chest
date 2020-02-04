@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { DeckbuilderComponent } from "./deckbuilder/deckbuilder/deckbuilder.component";
+import { DeckbuilderComponent } from "./deckbuilder/components/deckbuilder/deckbuilder.component";
 
 const routes: Routes = [{ path: "", component: DeckbuilderComponent }];
 

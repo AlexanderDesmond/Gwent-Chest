@@ -1,0 +1,16 @@
+.deckbuilder-container {
+  display: flex;
+
+  app-cards-list {
+    flex-basis: 80vw;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    margin: auto;
+    padding: 0;
+  }
+}

@@ -1,0 +1,48 @@
+<div class="deckbuilder-container">
+  <app-deck [deck]="deck" [deckInfo]="deckInfo"></app-deck>
+
+  <div class="cards-list-container">
+    <div class="cards leaders">
+      <ng-container *ngFor="let key of cardKeys">
+        <ng-container
+          *ngIf="
+            (cards[key].cardType === 'Leader' ||
+              cards[key].cardType === 'Strategem') &&
+            (!this.initialSelection ||
+              cards[key].faction === this.deck.faction ||
+              cards[key].faction === 'Neutral')
+          "
+        >
+          <app-card
+            [card]="cards[key]"
+            [key]="key"
+            (click)="selectCard(cards[key], key)"
+          ></app-card>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <hr />
+
+    <div class="cards normal-cards" *ngIf="this.deck.leader">
+      <ng-container *ngFor="let key of cardKeys">
+        <ng-container
+          *ngIf="
+            cards[key].cardType !== 'Leader' &&
+            cards[key].cardType !== 'Strategem' &&
+            cards[key].provision !== 0 &&
+            (cards[key].faction === this.deck.faction ||
+              cards[key].secondaryFaction === this.deck.faction ||
+              cards[key].faction === 'Neutral')
+          "
+        >
+          <app-card
+            [card]="cards[key]"
+            [key]="key"
+            (click)="selectCard(cards[key], key)"
+          ></app-card>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

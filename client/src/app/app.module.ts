@@ -4,10 +4,10 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
-import { CardsModule } from "./cards/cards.module";
 import { DeckbuilderModule } from "./deckbuilder/deckbuilder.module";
 import { CoreModule } from "./core/core.module";
 import { DeckService } from "./core/services/deck.service";
+import { DeckModule } from "./deck/deck.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,8 +15,8 @@ import { DeckService } from "./core/services/deck.service";
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    CardsModule,
-    DeckbuilderModule
+    DeckbuilderModule,
+    DeckModule
   ],
   providers: [DeckService],
   bootstrap: [AppComponent]
