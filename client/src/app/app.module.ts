@@ -1,13 +1,15 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-
-import { DeckbuilderModule } from "./deckbuilder/deckbuilder.module";
 import { CoreModule } from "./core/core.module";
-import { DeckService } from "./core/services/deck.service";
+import { DeckbuilderModule } from "./deckbuilder/deckbuilder.module";
 import { DeckModule } from "./deck/deck.module";
+import { DeckService } from "./core/services/deck.service";
+import { AuthenticationModule } from "./authentication/authentication.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MaterialModule } from "./angular-material.module";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +18,11 @@ import { DeckModule } from "./deck/deck.module";
     AppRoutingModule,
     CoreModule,
     DeckbuilderModule,
-    DeckModule
+    DeckModule,
+    AuthenticationModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [DeckService],
   bootstrap: [AppComponent]
