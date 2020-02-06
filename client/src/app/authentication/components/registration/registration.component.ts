@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { AuthenticationService } from "src/app/core/services/authentication.service";
 
 @Component({
   selector: "app-registration",
@@ -24,6 +25,10 @@ export class RegistrationComponent implements OnInit {
       email: ["", [Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(8)]]
     });
+  }
+
+  onSubmit() {
+    console.log("Successfully registered.");
   }
 
   get username() {

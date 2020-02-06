@@ -1,6 +1,7 @@
 <div class="form">
-  <form [formGroup]="form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <span class="mat-title">Login</span>
+    Logged In: {{ isLoggedIn }} Current User: {{ currentUser }}
     <mat-form-field>
       <input matInput formControlName="username" placeholder="username" />
 
@@ -23,6 +24,6 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-raised-button>Login</button>
+    <button mat-raised-button [disabled]="form.invalid">Login</button>
   </form>
 </div>

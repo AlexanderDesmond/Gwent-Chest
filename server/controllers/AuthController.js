@@ -16,7 +16,7 @@ exports.register = async (req, res) => {
 
   // Check to see if user already has an account.
   const emailExists = await UserModel.findOne({
-    emailAddress: req.body.emailAddress
+    email: req.body.email
   });
   if (emailExists)
     return res
@@ -30,7 +30,7 @@ exports.register = async (req, res) => {
   // Create new user object.
   const user = new UserModel({
     username: req.body.username,
-    emailAddress: req.body.emailAddress,
+    email: req.body.email,
     password: hashedPassword
   });
 
@@ -49,17 +49,84 @@ exports.login = async (req, res) => {
   const { error } = loginValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  // Check to see if the email address is in the database.
+  // Check to see if the username is in the database.
   const user = await UserModel.findOne({
-    emailAddress: req.body.emailAddress
+    username: req.body.username
+    //emailAddress: req.body.emailAddress
   });
-  if (!user) return res.status(400).send("Incorrect email address.");
+  if (!user) return res.status(400).send("Incorrect username.");
 
   // Check to see if the password matches the password in the database.
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).send("Invalid password.");
 
   // Create and sign token.
-  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-  res.header("auth-token", token).send(token);
+  const token = jwt.sign(
+    { _id: user._id, username: user.username },
+    process.env.TOKEN_SECRET,
+    {
+      expiresIn: "1h"
+    }
+  );
+  //res.header("auth-token", token).send(token);
+  //res.header("x-access-token", token).send(token);
+  res.header("x-access-token", token);
+  /*
+  res.body({
+    user: {
+      username: user.username
+    }
+  });
+  */
+  res.send({
+    auth: true,
+    token: token,
+    user: {
+      username: user.username
+    }
+  });
+};
+
+// VERIFY TOKEN
+exports.verifyToken = async (req, res, next) => {
+  const token = req.headers["x-access-token"];
+
+  if (!token) {
+    return res.status(403).send({
+      auth: false,
+      message: "No token provided."
+    });
+  }
+
+  jwt.verify(token, process.env.TOKEN_SECRET),
+    (err, decoded) => {
+      if (err) {
+        return res.status(500).send({
+          auth: false,
+          message: "Failed to verify token."
+        });
+      }
+
+      req.username = decoded.username;
+      next();
+    };
+};
+
+// REFRESH TOKEN
+exports.refreshToken = async (req, res) => {
+  const user = UserModel.findOne({ username: req.body.username });
+  if (!user)
+    return res
+      .status(400)
+      .send({ auth: false, message: "Could not find user" });
+
+  const token = jwt.sign(
+    { _id: user._id, username: user.username },
+    process.env.TOKEN_SECRET,
+    {
+      expiresIn: "1h"
+    }
+  );
+
+  return res.send({ auth: true, token: token, user: { username: username } });
 };

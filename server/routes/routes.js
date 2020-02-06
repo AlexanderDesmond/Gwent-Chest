@@ -28,10 +28,14 @@ Router.route("/decks/:id")
   .delete(DeckController.deleteDeck);
 
 // Register new user
-Router.route("/users/register").post(AuthController.register);
+Router.route("/register").post(AuthController.register);
 
 // Login user
-Router.route("/users/login").post(AuthController.login);
+Router.route("/login").post(AuthController.login);
+Router.route("/refreshtoken").get(
+  AuthController.verifyToken,
+  AuthController.refreshToken
+);
 
 // Test jwt
 const verify = require("../helpers/verifyToken");

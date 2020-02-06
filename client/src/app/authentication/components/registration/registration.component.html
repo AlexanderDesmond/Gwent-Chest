@@ -1,5 +1,5 @@
 <div class="form">
-  <form [formGroup]="form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <span class="mat-title">Registration</span>
     <mat-form-field>
       <input matInput formControlName="username" placeholder="username" />
@@ -31,6 +31,6 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-raised-button>Register</button>
+    <button mat-raised-button [disabled]="form.invalid">Register</button>
   </form>
 </div>
