@@ -31,6 +31,11 @@ export class AuthenticationService {
   }
   // test
 
+  // Register new user.
+  register(username: string, email: string, password: string) {
+    return this.http.post("/api/register/", { username, email, password });
+  }
+
   // Calls the login endpoint in the api, and stores the username and token into local storage.
   login(username: string, password: string) {
     return this.http.post("/api/login/", { username, password }).pipe(

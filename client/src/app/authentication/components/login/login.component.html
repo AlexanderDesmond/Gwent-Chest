@@ -25,5 +25,8 @@
     </mat-form-field>
 
     <button mat-raised-button [disabled]="form.invalid">Login</button>
+    <span
+      >Don't have an account? <a [routerLink]="['/register']">Register here!</a>
+    </span>
   </form>
 </div>

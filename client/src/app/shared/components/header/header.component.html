@@ -1,1 +1,20 @@
-<p>header works!</p>
+<mat-sidenav-container>
+  <mat-sidenav position="end" [(opened)]="isOpened">
+    <span>User: {{ currentUser || "undefined" }}</span>
+    <button (click)="onClick()">{{ isLoggedIn ? "Logout" : "Login" }}</button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar fxLayout="column" fxLayoutAlign="center">
+      <div>
+        <span [routerLink]="['/']">Gwent Chest</span>
+      </div>
+      <div>
+        <span>{{ currentUser }}</span>
+
+        <button (click)="isOpened = !isOpened">Menu</button>
+      </div>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

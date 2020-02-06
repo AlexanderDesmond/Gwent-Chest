@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 // Layout
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatSidenavModule } from "@angular/material/sidenav";
 
 // Buttons
 import { MatButtonModule } from "@angular/material/button";
@@ -17,14 +18,16 @@ import { MatInputModule } from "@angular/material/input";
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule
   ],
   exports: [
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule
   ]
 })
 export class MaterialModule {}

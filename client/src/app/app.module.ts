@@ -10,8 +10,9 @@ import { DeckService } from "./core/services/deck.service";
 import { AuthenticationModule } from "./authentication/authentication.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MaterialModule } from "./angular-material.module";
-//import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from "@angular/flex-layout";
 import { SharedModule } from "./shared/shared.module";
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,8 +26,9 @@ import { SharedModule } from "./shared/shared.module";
     DeckModule,
     AuthenticationModule,
     BrowserAnimationsModule,
-    MaterialModule
-    //FlexLayoutModule
+    MaterialModule,
+    FlexLayoutModule,
+    RouterModule
   ],
   providers: [DeckService],
   bootstrap: [AppComponent]
