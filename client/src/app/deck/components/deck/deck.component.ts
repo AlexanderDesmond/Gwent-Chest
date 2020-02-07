@@ -24,11 +24,15 @@ export class DeckComponent implements OnInit {
     usedProvisions: 0
   };
 
-  constructor() {
+  constructor(private deckbuilderService: DeckbuilderService) {
     this.deckInfo.provisions += this.deckInfo.baseProvisions;
   }
 
   ngOnInit() {}
+
+  removeCard(card) {
+    this.deckbuilderService.removeCard(card);
+  }
 
   // Return a background image for the card previews.
   getCardPreviewStyles(card) {

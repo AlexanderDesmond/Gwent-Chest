@@ -118,16 +118,62 @@ export class DeckbuilderService {
         if (card.name["en-US"] === deckCard.name["en-US"]) {
           if (copyCounter > 1) {
             deckCard.duplicate = true;
+
             return true;
           }
           deckCard.duplicate = true;
-
           ++copyCounter;
+
+          // Update deck info.
+          this.deckInfo.cardCount++;
+          if (card.cardType === "Unit") {
+            this.deckInfo.unitCount++;
+          }
+
+          return true;
         }
       }
     }
 
     return false;
+  }
+
+  removeCard(card) {
+    // Remove gold card, or bronze card if there is only a single copy in deck.
+    if (card.type === "Gold" || (card.type === "Bronze" && !card.duplicate)) {
+      for (let i = 0; i < this.deck.cards.length; ++i) {
+        if (card.name["en-US"] === this.deck.cards[i].name["en-US"]) {
+          // Remove card from deck.
+          this.deck.cards.splice(i, 1);
+
+          // Update deck info.
+          this.deckInfo.cardCount--;
+          if (card.cardType === "Unit") {
+            this.deckInfo.unitCount--;
+          }
+        }
+      }
+    }
+
+    // Remove first copy of bronze card if there is more than a single copy in deck.
+    if (card.type === "Bronze" && card.duplicate) {
+      for (let i = 0; i < this.deck.cards.length; ++i) {
+        if (card.name["en-US"] === this.deck.cards[i].name["en-US"]) {
+          // Set duplicate flag on card to false.
+          this.deck.cards[i].duplicate = false;
+
+          // Update deck info.
+          this.deckInfo.cardCount--;
+          if (card.cardType === "Unit") {
+            this.deckInfo.unitCount--;
+          }
+        }
+      }
+    }
+  }
+
+  filterCardList() {
+    // handle all the filters and stuff
   }
 
   get initialSelection() {

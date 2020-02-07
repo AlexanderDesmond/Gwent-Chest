@@ -63,6 +63,7 @@
     <ng-container *ngFor="let card of this.deck.cards">
       <div
         class="card-preview"
+        (click)="removeCard(card)"
         [ngStyle]="getCardPreviewStyles(card)"
         [style.color]="card.type === 'Gold' ? 'gold' : '#cd7f32'"
       >

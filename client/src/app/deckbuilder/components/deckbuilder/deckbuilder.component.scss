@@ -1,6 +1,10 @@
 .deckbuilder-container {
   display: flex;
 
+  .save-btn {
+    width: 100%;
+  }
+
   app-cards-list {
     flex-basis: 80vw;
   }

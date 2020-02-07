@@ -4,10 +4,11 @@ import { DeckbuilderComponent } from "./components/deckbuilder/deckbuilder.compo
 import { CardComponent } from "./components/card/card.component";
 
 import { DeckComponent } from "../deck/components/deck/deck.component";
+import { MaterialModule } from "../angular-material.module";
 
 @NgModule({
   declarations: [DeckbuilderComponent, CardComponent, DeckComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, MaterialModule],
   exports: [DeckbuilderComponent]
 })
 export class DeckbuilderModule {}
