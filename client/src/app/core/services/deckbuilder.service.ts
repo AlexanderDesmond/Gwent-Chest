@@ -172,6 +172,37 @@ export class DeckbuilderService {
     }
   }
 
+  saveDeck(): boolean {
+    const isValid = this.verifyDeck();
+    if (isValid) {
+      console.log("A valid deck!", this.deckInfo.cardCount);
+    } else {
+      console.log("An invalid deck. :(");
+    }
+
+    return isValid;
+  }
+
+  verifyDeck(): boolean {
+    if (
+      this.deckInfo &&
+      this.deck &&
+      this.deck.leader &&
+      this.deck.strategem &&
+      this.deck.cards
+    ) {
+      if (
+        this.deckInfo.cardCount >= 25 &&
+        this.deckInfo.unitCount >= 13 &&
+        this.deckInfo.usedProvisions <= this.deckInfo.provisions
+      ) {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
+
   filterCardList() {
     // handle all the filters and stuff
   }

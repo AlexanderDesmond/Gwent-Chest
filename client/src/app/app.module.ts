@@ -13,6 +13,7 @@ import { MaterialModule } from "./angular-material.module";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SharedModule } from "./shared/shared.module";
 import { RouterModule } from "@angular/router";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,8 @@ import { RouterModule } from "@angular/router";
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   providers: [DeckService],
   bootstrap: [AppComponent]

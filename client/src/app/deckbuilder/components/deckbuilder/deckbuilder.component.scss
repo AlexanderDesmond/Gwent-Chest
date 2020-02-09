@@ -1,8 +1,42 @@
+.filter {
+  display: flex;
+  justify-content: center;
+
+  //font-size: 1.6rem;
+
+  background-color: white;
+
+  .filter-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    //margin: 1rem;
+
+    .filter-buttons {
+      text-align: center;
+    }
+  }
+
+  .toggle-group {
+    text-align: center;
+
+    mat-button-toggle {
+      line-height: 2rem;
+    }
+  }
+}
+
 .deckbuilder-container {
   display: flex;
 
   .save-btn {
     width: 100%;
+  }
+
+  .deck-error {
+    font-size: 1.2rem;
   }
 
   app-cards-list {

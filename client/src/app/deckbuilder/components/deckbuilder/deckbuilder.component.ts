@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Deck } from "src/app/core/models/deck";
 import { DeckbuilderService } from "src/app/core/services/deckbuilder.service";
 import { CardService } from "src/app/core/services/card.service";
@@ -19,6 +19,7 @@ export class DeckbuilderComponent implements OnInit {
   card: object;
   deck: Deck;
 
+  // Deck info
   deckInfo: DeckInfo = {
     minCards: 25,
     cardCount: 0,
@@ -30,6 +31,14 @@ export class DeckbuilderComponent implements OnInit {
   };
 
   initialSelection: boolean = false;
+  isValidDeck: boolean = true;
+
+  cardsList = [];
+
+  // Options for filter.
+  faction: string;
+  type: string;
+  colour: string;
 
   constructor(
     private deckbuilderService: DeckbuilderService,
@@ -37,8 +46,22 @@ export class DeckbuilderComponent implements OnInit {
     private deckService: DeckService
   ) {
     this.cardKeys = Object.keys(this.cards);
-
     this.deckInfo.provisions += this.deckInfo.baseProvisions;
+
+    // Create array for all cards (excluding leaders and strategems);
+    this.cardsList = Object.keys(this.cards)
+      .map(key => ({
+        id: key,
+        data: this.cards[key]
+      }))
+      .filter(
+        card =>
+          card.data.cardType !== "Leader" &&
+          card.data.cardType !== "Strategem" &&
+          card.data.provision !== 0
+      )
+      .sort((a, b) => b.data.provision - a.data.provision);
+    console.log("Card List: ", this.cardsList);
   }
 
   ngOnInit() {
@@ -62,6 +85,18 @@ export class DeckbuilderComponent implements OnInit {
 
     this.cardService.addCard(card);
     this.deckService.buildDeck(this.deck);
+
+    // Set the faction options.
+    //this.faction[0] = "Neutral";
+    //this.faction[1] = this.deck.faction;
+  }
+
+  saveDeck(): void {
+    this.isValidDeck = this.deckbuilderService.saveDeck();
+  }
+
+  toggleFaction(): void {
+    console.log("Faction toggled. ;)");
   }
 
   // Return a background image for the card previews.
@@ -91,4 +126,15 @@ export class DeckbuilderComponent implements OnInit {
   getDeckTest() {
     console.log("Got list deck right here: ", this.deck);
   }
+
+  /*
+  filterCards() {
+    return this.cardsList.filter(
+      list =>
+        list.card.faction === this.deck.faction ||
+        list.card.secondaryFaction === this.deck.faction ||
+        list.card.faction === "Neutral"
+    );
+  }
+  */
 }

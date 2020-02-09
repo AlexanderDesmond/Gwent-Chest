@@ -9,9 +9,10 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { RouterModule } from "@angular/router";
+import { FilterCardsPipe } from "./pipes/filter-cards.pipe";
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, FilterCardsPipe],
   imports: [
     CommonModule,
     MaterialModule,
@@ -23,6 +24,6 @@ import { RouterModule } from "@angular/router";
     MatListModule,
     RouterModule
   ],
-  exports: [HeaderComponent]
+  exports: [HeaderComponent, FilterCardsPipe]
 })
 export class SharedModule {}
