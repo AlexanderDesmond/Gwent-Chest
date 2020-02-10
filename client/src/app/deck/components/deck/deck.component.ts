@@ -24,7 +24,10 @@ export class DeckComponent implements OnInit {
     usedProvisions: 0
   };
 
-  constructor(private deckbuilderService: DeckbuilderService) {
+  constructor(
+    private deckbuilderService: DeckbuilderService,
+    private cardService: CardService
+  ) {
     this.deckInfo.provisions += this.deckInfo.baseProvisions;
   }
 
@@ -51,5 +54,9 @@ export class DeckComponent implements OnInit {
         return this.deck.images[index].image;
       }
     }
+  }
+
+  getCardColour(card) {
+    return this.cardService.getCardColour(card);
   }
 }

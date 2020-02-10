@@ -35,8 +35,13 @@
         {{ this.deck.leader.provisionBoost }}
       </span>
       <div class="card-tooltip">
-        <span class="name">{{ this.deck.leader.name["en-US"] }}</span>
-        <span>{{ this.deck.leader.cardType }}</span>
+        <div
+          class="card-title"
+          [ngStyle]="{ backgroundColor: getCardColour(this.deck.leader) }"
+        >
+          <span class="name">{{ this.deck.leader.name["en-US"] }}</span>
+          <span>{{ this.deck.leader.cardType }}</span>
+        </div>
         <span>{{ this.deck.leader.info["en-US"] }}</span>
       </div>
     </div>
@@ -52,8 +57,14 @@
           <span>{{ this.deck.strategem.name["en-US"] }}</span>
         </div>
         <div class="card-tooltip">
-          <span class="name">{{ this.deck.strategem.name["en-US"] }}</span>
-          <span>{{ this.deck.strategem.cardType }}</span>
+          <div
+            class="card-title"
+            [ngStyle]="{ backgroundColor: getCardColour(this.deck.strategem) }"
+          >
+            <span class="name">{{ this.deck.strategem.name["en-US"] }}</span>
+            <span>{{ this.deck.strategem.cardType }}</span>
+          </div>
+
           <span>{{ this.deck.strategem.info["en-US"] }}</span>
         </div>
       </div>
@@ -76,8 +87,13 @@
         </div>
         <div class="duplicate-flag" *ngIf="card.duplicate">x2</div>
         <div class="card-tooltip">
-          <span class="name">{{ card.name["en-US"] }}</span>
-          <span>{{ card.cardType }}</span>
+          <div
+            class="card-title"
+            [ngStyle]="{ backgroundColor: getCardColour(card) }"
+          >
+            <span class="name">{{ card.name["en-US"] }}</span>
+            <span>{{ card.cardType }}</span>
+          </div>
           <span>{{ card.info["en-US"] }}</span>
         </div>
       </div>

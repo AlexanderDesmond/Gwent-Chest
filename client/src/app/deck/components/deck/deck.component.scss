@@ -118,15 +118,20 @@
   z-index: 2;
   display: none;
 
-  font-size: 0.8rem;
+  //font-size: 0.8rem;
   background-color: white;
   color: black;
 
-  span {
-    display: block;
-  }
+  .card-title {
+    //display: block;
+    color: white;
 
-  .name {
-    font-weight: bold;
+    .name {
+      font-weight: bold;
+    }
+
+    span {
+      display: block;
+    }
   }
 }
