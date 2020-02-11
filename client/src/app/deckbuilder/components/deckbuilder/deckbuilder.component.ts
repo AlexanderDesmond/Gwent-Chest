@@ -92,7 +92,11 @@ export class DeckbuilderComponent implements OnInit {
   }
 
   saveDeck(): void {
-    this.isValidDeck = this.deckbuilderService.saveDeck();
+    if (localStorage.getItem("currentUser")) {
+      this.isValidDeck = this.deckbuilderService.saveDeck();
+    } else {
+      console.log("No user logged in.");
+    }
   }
 
   toggleFaction(): void {

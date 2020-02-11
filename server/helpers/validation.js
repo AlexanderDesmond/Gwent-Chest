@@ -32,5 +32,13 @@ const loginValidation = data => {
   return schema.validate(data);
 };
 
+const deckValidation = data => {
+  const schema = Joi.object({
+    username: Joi.string().required(),
+    deck: Joi.object().required()
+  });
+};
+
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
+module.exports.deckValidation = deckValidation;
