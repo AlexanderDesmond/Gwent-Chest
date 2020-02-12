@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 import { Deck } from "../models/deck";
 import { DeckInfo } from "../models/deck-info";
 import { BehaviorSubject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
@@ -12,7 +14,7 @@ export class DeckbuilderService {
 
   private initialSelectionSubject = new BehaviorSubject<boolean>(false);
 
-  constructor() {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   generateDeck(deck, deckInfo, card, key) {
     this.deck = deck;
@@ -175,9 +177,14 @@ export class DeckbuilderService {
   saveDeck(): boolean {
     const isValid = this.verifyDeck();
     if (isValid) {
-      console.log("A valid deck!", this.deckInfo.cardCount);
-    } else {
-      console.log("An invalid deck. :(");
+      this.addDeck(localStorage.getItem("currentUser"), this.deck).subscribe(
+        data => {
+          this.router.navigate(["/catalogue"]);
+        },
+        error => {
+          console.log("Problem saving deck to database.");
+        }
+      );
     }
 
     return isValid;
@@ -203,8 +210,8 @@ export class DeckbuilderService {
     }
   }
 
-  filterCardList() {
-    // handle all the filters and stuff
+  addDeck(username: string, deck: Deck) {
+    return this.http.post("/api/decks/", { username, deck });
   }
 
   get initialSelection() {

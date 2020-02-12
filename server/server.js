@@ -8,8 +8,14 @@ const BodyParser = require("body-parser");
 
 const app = Express();
 app.use(Cors());
-app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({ extended: true }));
+app.use(BodyParser.json({ limit: "50mb" }));
+app.use(
+  BodyParser.urlencoded({
+    limit: "50mb",
+    extended: true,
+    parameterLimit: 50000
+  })
+);
 
 // Routes
 const routes = require("./routes/routes");

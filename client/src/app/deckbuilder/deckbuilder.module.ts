@@ -3,14 +3,20 @@ import { CommonModule } from "@angular/common";
 import { DeckbuilderComponent } from "./components/deckbuilder/deckbuilder.component";
 import { CardComponent } from "./components/card/card.component";
 
-import { DeckComponent } from "../deck/components/deck/deck.component";
 import { MaterialModule } from "../angular-material.module";
 import { SharedModule } from "../shared/shared.module";
 import { FormsModule } from "@angular/forms";
+import { DeckModule } from "../deck/deck.module";
 
 @NgModule({
-  declarations: [DeckbuilderComponent, CardComponent, DeckComponent],
-  imports: [CommonModule, SharedModule, MaterialModule, FormsModule],
+  declarations: [DeckbuilderComponent, CardComponent],
+  imports: [
+    CommonModule,
+    SharedModule,
+    MaterialModule,
+    FormsModule,
+    DeckModule
+  ],
   exports: [DeckbuilderComponent]
 })
 export class DeckbuilderModule {}

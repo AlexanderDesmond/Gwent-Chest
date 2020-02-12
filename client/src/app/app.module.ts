@@ -14,6 +14,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { SharedModule } from "./shared/shared.module";
 import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
+import { CatalogueModule } from "./catalogue/catalogue.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,7 @@ import { FormsModule } from "@angular/forms";
     SharedModule,
     DeckbuilderModule,
     DeckModule,
+    CatalogueModule,
     AuthenticationModule,
     BrowserAnimationsModule,
     MaterialModule,

@@ -1,12 +1,12 @@
 const Mongoose = require("mongoose");
 
 const DeckScheme = Mongoose.Schema({
-  deck: {
-    type: {},
+  username: {
+    type: String,
     required: true
   },
-  owner: {
-    type: String,
+  deck: {
+    type: {},
     required: true
   }
 });
