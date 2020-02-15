@@ -35,7 +35,8 @@ const loginValidation = data => {
 const deckValidation = data => {
   const schema = Joi.object({
     username: Joi.string().required(),
-    deck: Joi.object().required()
+    deck: Joi.object().required(),
+    name: Joi.string().required()
   });
 
   return schema.validate(data);

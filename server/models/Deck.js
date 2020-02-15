@@ -8,6 +8,18 @@ const DeckScheme = Mongoose.Schema({
   deck: {
     type: {},
     required: true
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  points: {
+    type: Number,
+    default: 0
+  },
+  date: {
+    type: Date,
+    default: Date.now()
   }
 });
 

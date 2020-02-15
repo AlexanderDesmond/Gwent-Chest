@@ -5,6 +5,8 @@ import { CardService } from "src/app/core/services/card.service";
 import { DeckService } from "src/app/core/services/deck.service";
 import { DeckInfo } from "src/app/core/models/deck-info";
 
+import { FormBuilder, FormGroup } from "@angular/forms";
+
 import Cards from "../../../../assets/gwent-data-release/cards.json";
 
 @Component({
@@ -27,7 +29,8 @@ export class DeckbuilderComponent implements OnInit {
     unitCount: 0,
     baseProvisions: 150,
     provisions: 0,
-    usedProvisions: 0
+    usedProvisions: 0,
+    scraps: 0
   };
 
   initialSelection: boolean = false;
@@ -40,10 +43,13 @@ export class DeckbuilderComponent implements OnInit {
   type: string;
   colour: string;
 
+  form;
+
   constructor(
     private deckbuilderService: DeckbuilderService,
     private cardService: CardService,
-    private deckService: DeckService
+    private deckService: DeckService,
+    private formBuilder: FormBuilder
   ) {
     this.cardKeys = Object.keys(this.cards);
     this.deckInfo.provisions += this.deckInfo.baseProvisions;
@@ -71,6 +77,10 @@ export class DeckbuilderComponent implements OnInit {
     this.deckbuilderService.initialSelection.subscribe(
       initialSelection => (this.initialSelection = initialSelection)
     );
+
+    this.form = this.formBuilder.group({
+      name: ""
+    });
   }
 
   // Select a card to add to the deck.
@@ -85,15 +95,16 @@ export class DeckbuilderComponent implements OnInit {
 
     this.cardService.addCard(card);
     this.deckService.buildDeck(this.deck);
-
-    // Set the faction options.
-    //this.faction[0] = "Neutral";
-    //this.faction[1] = this.deck.faction;
   }
 
   saveDeck(): void {
     if (localStorage.getItem("currentUser")) {
-      this.isValidDeck = this.deckbuilderService.saveDeck();
+      const name =
+        this.deck.leader && !this.name.value
+          ? this.deck.leader.name["en-US"]
+          : this.name.value;
+
+      this.isValidDeck = this.deckbuilderService.saveDeck(name);
     } else {
       console.log("No user logged in.");
     }
@@ -126,19 +137,12 @@ export class DeckbuilderComponent implements OnInit {
     return this.deckService.isDuplicate(card);
   }
 
+  get name() {
+    return this.form.get("name");
+  }
+
   // test
   getDeckTest() {
     console.log("Got list deck right here: ", this.deck);
   }
-
-  /*
-  filterCards() {
-    return this.cardsList.filter(
-      list =>
-        list.card.faction === this.deck.faction ||
-        list.card.secondaryFaction === this.deck.faction ||
-        list.card.faction === "Neutral"
-    );
-  }
-  */
 }

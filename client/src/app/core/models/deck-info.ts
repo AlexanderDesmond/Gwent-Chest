@@ -6,4 +6,5 @@ export interface DeckInfo {
   baseProvisions: number;
   provisions: number;
   usedProvisions: number;
+  scraps: number;
 }

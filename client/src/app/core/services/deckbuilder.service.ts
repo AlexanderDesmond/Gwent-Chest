@@ -89,20 +89,24 @@ export class DeckbuilderService {
   addCard(card, key) {
     //this.getKey(card.name["en-US"]);
 
+    // Check to see if the card is not a duplicate.
     if (!this.checkDuplicates(card)) {
+      // Add card.
       this.deck.cards.push(card);
 
+      // Update deck info.
       this.deckInfo.cardCount++;
       if (card.cardType === "Unit") {
         this.deckInfo.unitCount++;
       }
+      this.deckInfo.usedProvisions += card.provision;
+      //this.deckInfo.scraps += card.variations[key + "00"].craft.standard;
 
+      // Add images.
       this.deck.images.push({
         card: card.name["en-US"],
         image: card.variations[key + "00"].art.medium
       });
-
-      this.deckInfo.usedProvisions += card.provision;
     }
 
     console.log(this.deck.cards);
@@ -153,6 +157,8 @@ export class DeckbuilderService {
           if (card.cardType === "Unit") {
             this.deckInfo.unitCount--;
           }
+          this.deckInfo.usedProvisions -= card.provision;
+          //this.deckInfo.scraps -= card.variations[key + "00"].craft.standard;
         }
       }
     }
@@ -169,15 +175,20 @@ export class DeckbuilderService {
           if (card.cardType === "Unit") {
             this.deckInfo.unitCount--;
           }
+          this.deckInfo.usedProvisions -= card.provision;
         }
       }
     }
   }
 
-  saveDeck(): boolean {
+  saveDeck(name: string): boolean {
     const isValid = this.verifyDeck();
     if (isValid) {
-      this.addDeck(localStorage.getItem("currentUser"), this.deck).subscribe(
+      this.addDeck(
+        localStorage.getItem("currentUser"),
+        this.deck,
+        name
+      ).subscribe(
         data => {
           this.router.navigate(["/catalogue"]);
         },
@@ -210,8 +221,8 @@ export class DeckbuilderService {
     }
   }
 
-  addDeck(username: string, deck: Deck) {
-    return this.http.post("/api/decks/", { username, deck });
+  addDeck(username: string, deck: Deck, name: string) {
+    return this.http.post("/api/decks/", { username, deck, name });
   }
 
   get initialSelection() {

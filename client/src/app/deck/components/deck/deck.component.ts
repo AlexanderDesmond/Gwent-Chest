@@ -21,7 +21,8 @@ export class DeckComponent implements OnInit {
     unitCount: 0,
     baseProvisions: 150,
     provisions: 0,
-    usedProvisions: 0
+    usedProvisions: 0,
+    scraps: 0
   };
 
   constructor(

@@ -1,1 +1,10 @@
-<p>deck-preview works!</p>
+<div
+  class="deck-preview"
+  [ngStyle]="{ backgroundColor: getDeckColour(deck.deck.faction) }"
+>
+  <span>{{ deck.points }}</span>
+  <span>{{ deck.deck.leader.name["en-US"] }}</span>
+  <span>{{ deck.name }}</span>
+  <span>{{ deck.username }}</span>
+  <!-- <span>{{ deck.date }}</span> -->
+</div>

@@ -1,0 +1,14 @@
+.deck-catalogue {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  table {
+    width: 100%;
+  }
+
+  app-deck-table {
+    width: 66vw;
+  }
+}

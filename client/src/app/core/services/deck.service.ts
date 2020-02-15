@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Deck } from "../models/deck";
 import { BehaviorSubject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
@@ -15,7 +16,7 @@ export class DeckService {
   });
   currentDeck = this.deckSource.asObservable();
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   buildDeck(deck: Deck) {
     this.deckSource.next(deck);
@@ -25,6 +26,10 @@ export class DeckService {
 
   get deck() {
     return this.deckSource.asObservable();
+  }
+
+  getCatalogue() {
+    return this.http.get("/api/decks");
   }
 
   isDuplicate(card): boolean {

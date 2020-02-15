@@ -5,7 +5,7 @@ import { CardComponent } from "./components/card/card.component";
 
 import { MaterialModule } from "../angular-material.module";
 import { SharedModule } from "../shared/shared.module";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { DeckModule } from "../deck/deck.module";
 
 @NgModule({
@@ -15,6 +15,7 @@ import { DeckModule } from "../deck/deck.module";
     SharedModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     DeckModule
   ],
   exports: [DeckbuilderComponent]

@@ -57,6 +57,12 @@
 <div class="deckbuilder-container">
   <div>
     <app-deck [deck]="deck" [deckInfo]="deckInfo"></app-deck>
+
+    <form [formGroup]="form">
+      <mat-form-field>
+        <input matInput type="text" formControlName="name" placeholder="name" />
+      </mat-form-field>
+    </form>
     <button class="save-btn" mat-raised-button (click)="saveDeck()">
       Save
     </button>

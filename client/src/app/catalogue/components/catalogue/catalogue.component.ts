@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { DeckService } from "src/app/core/services/deck.service";
 
 @Component({
   selector: "app-catalogue",
@@ -6,9 +7,12 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./catalogue.component.scss"]
 })
 export class CatalogueComponent implements OnInit {
-  deckList = true;
+  deckList;
 
-  constructor() {}
+  constructor(private deckService: DeckService) {
+    //this.deckService.getCatalogue().subscribe(data => (this.deckList = data));
+    this.deckList = this.deckService.getCatalogue();
+  }
 
   ngOnInit(): void {}
 }
