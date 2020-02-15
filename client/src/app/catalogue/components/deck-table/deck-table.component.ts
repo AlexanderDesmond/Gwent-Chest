@@ -4,6 +4,7 @@ import { MatSort } from "@angular/material/sort";
 import { MatTable } from "@angular/material/table";
 import { DeckTableDataSource, DeckTableItem } from "./deck-table-datasource";
 import { DeckService } from "src/app/core/services/deck.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-deck-table",
@@ -22,7 +23,7 @@ export class DeckTableComponent implements AfterViewInit, OnInit {
 
   //
   deckList = [];
-  constructor(private deckService: DeckService) {
+  constructor(private router: Router, private deckService: DeckService) {
     this.deckService.getCatalogue().subscribe(
       data => {
         this.deckList = this.formatDeckList(data);
@@ -113,7 +114,8 @@ export class DeckTableComponent implements AfterViewInit, OnInit {
     return colour;
   }
 
-  onClick(id) {
+  onClick(id: string) {
     alert(id);
+    this.router.navigate(["/deck/", id]);
   }
 }

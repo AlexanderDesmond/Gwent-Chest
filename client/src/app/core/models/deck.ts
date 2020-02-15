@@ -1,4 +1,5 @@
 import { Card } from "./card";
+import { DeckInfo } from "./deck-info";
 
 export interface Deck {
   faction: string;
@@ -31,6 +32,7 @@ export interface Deck {
   //cards;
   cards: Card[];
   images: Image[];
+  info: DeckInfo;
 }
 
 export interface Image {

@@ -1,0 +1,10 @@
+<div class="deck-container">
+  <h1>{{ deck.name }}</h1>
+  <h2>{{ deck.username }}</h2>
+
+  <app-deck
+    *ngIf="deck"
+    [deck]="deck.deck"
+    [deckInfo]="deck.deck.info"
+  ></app-deck>
+</div>

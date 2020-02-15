@@ -184,6 +184,7 @@ export class DeckbuilderService {
   saveDeck(name: string): boolean {
     const isValid = this.verifyDeck();
     if (isValid) {
+      this.deck.info = this.deckInfo;
       this.addDeck(
         localStorage.getItem("currentUser"),
         this.deck,

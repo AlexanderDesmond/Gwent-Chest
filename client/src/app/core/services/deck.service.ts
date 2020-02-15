@@ -12,7 +12,8 @@ export class DeckService {
     leader: null,
     strategem: null,
     cards: null,
-    images: null
+    images: null,
+    info: null
   });
   currentDeck = this.deckSource.asObservable();
 
@@ -30,6 +31,10 @@ export class DeckService {
 
   getCatalogue() {
     return this.http.get("/api/decks");
+  }
+
+  getDeck(id: string) {
+    return this.http.get("/api/decks/" + id);
   }
 
   isDuplicate(card): boolean {
