@@ -12,7 +12,10 @@
     justify-content: center;
     align-items: center;
 
-    //margin: 1rem;
+    label {
+      margin-bottom: 0.5;
+      font-size: 1.2rem;
+    }
 
     .filter-buttons {
       text-align: center;
@@ -20,16 +23,19 @@
   }
 
   .toggle-group {
+    margin: 0.5rem;
     text-align: center;
-
-    mat-button-toggle {
-      line-height: 2rem;
-    }
   }
 }
 
 .deckbuilder-container {
   display: flex;
+
+  form > mat-form-field {
+    width: 100%;
+
+    color: #f0f0f0;
+  }
 
   .save-btn {
     width: 100%;

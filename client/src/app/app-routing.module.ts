@@ -7,9 +7,9 @@ import { CatalogueComponent } from "./catalogue/components/catalogue/catalogue.c
 import { DeckViewComponent } from "./deck/components/deck-view/deck-view.component";
 
 const routes: Routes = [
-  { path: "catalogue", component: CatalogueComponent },
+  { path: "", component: CatalogueComponent },
   { path: "deck/:id", component: DeckViewComponent },
-  { path: "", component: DeckbuilderComponent },
+  { path: "deckbuilder", component: DeckbuilderComponent },
   { path: "register", component: RegistrationComponent },
   { path: "login", component: LoginComponent }
 ];

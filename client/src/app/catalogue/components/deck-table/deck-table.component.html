@@ -37,6 +37,7 @@
       mat-row
       *matRowDef="let row; columns: displayedColumns"
       [ngStyle]="{ backgroundColor: getDeckColour(row.faction) }"
+      style="cursor: pointer;"
       (click)="onClick(row.id)"
     ></tr>
   </table>

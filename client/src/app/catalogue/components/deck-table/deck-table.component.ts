@@ -115,7 +115,6 @@ export class DeckTableComponent implements AfterViewInit, OnInit {
   }
 
   onClick(id: string) {
-    alert(id);
     this.router.navigate(["/deck/", id]);
   }
 }

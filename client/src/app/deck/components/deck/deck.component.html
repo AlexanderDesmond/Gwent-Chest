@@ -71,7 +71,7 @@
     </ng-container>
   </div>
   <div class="deck-card-list" *ngIf="this.deck.cards">
-    <ng-container *ngFor="let card of this.deck.cards">
+    <ng-container *ngFor="let card of this.deck.cards | filterDeck">
       <div
         class="card-preview"
         (click)="removeCard(card)"

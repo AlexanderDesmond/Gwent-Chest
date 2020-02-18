@@ -10,9 +10,11 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { RouterModule } from "@angular/router";
 import { FilterCardsPipe } from "./pipes/filter-cards.pipe";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { FilterDeckPipe } from "./pipes/filter-deck.pipe";
 
 @NgModule({
-  declarations: [HeaderComponent, FilterCardsPipe],
+  declarations: [HeaderComponent, FilterCardsPipe, FilterDeckPipe],
   imports: [
     CommonModule,
     MaterialModule,
@@ -22,8 +24,9 @@ import { FilterCardsPipe } from "./pipes/filter-cards.pipe";
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    RouterModule
+    RouterModule,
+    FlexLayoutModule
   ],
-  exports: [HeaderComponent, FilterCardsPipe]
+  exports: [HeaderComponent, FilterCardsPipe, FilterDeckPipe]
 })
 export class SharedModule {}

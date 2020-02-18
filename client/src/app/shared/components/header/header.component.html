@@ -1,17 +1,27 @@
 <mat-sidenav-container>
   <mat-sidenav position="end" [(opened)]="isOpened">
-    <span>User: {{ currentUser || "undefined" }}</span>
-    <button (click)="onClick()">{{ isLoggedIn ? "Logout" : "Login" }}</button>
+    <div class="menu-items" fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <span *ngIf="isLoggedIn">{{ currentUser }}</span>
+        <button mat-stroked-button (click)="onClick()">
+          {{ isLoggedIn ? "Logout" : "Login" }}
+        </button>
+      </div>
+      <a [routerLink]="['/']" (click)="isOpened = !isOpened">Catalogue</a>
+      <a [routerLink]="['/deckbuilder']" (click)="isOpened = !isOpened"
+        >Deckbuilder</a
+      >
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar fxLayout="column" fxLayoutAlign="center">
+    <mat-toolbar>
       <div>
         <span [routerLink]="['/']">Gwent Chest</span>
       </div>
       <div>
-        <span>{{ currentUser }}</span>
-
-        <button (click)="isOpened = !isOpened">Menu</button>
+        <button mat-icon-button (click)="isOpened = !isOpened">
+          <mat-icon>menu</mat-icon>
+        </button>
       </div>
     </mat-toolbar>
 

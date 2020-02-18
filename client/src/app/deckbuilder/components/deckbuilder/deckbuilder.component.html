@@ -3,6 +3,7 @@
     <label>Faction</label>
     <mat-button-toggle-group
       class="toggle-group faction-toggle"
+      value="All"
       [(ngModel)]="faction"
     >
       <mat-button-toggle value="{{ 'Neutral' + '|' + deck.faction }}">
@@ -20,6 +21,7 @@
     <label>Type</label>
     <mat-button-toggle-group
       class="toggle-group type-toggle"
+      value="All"
       [(ngModel)]="type"
     >
       <mat-button-toggle value="All">
@@ -40,6 +42,7 @@
     <label>Colour</label>
     <mat-button-toggle-group
       class="toggle-group colour-toggle"
+      value="All"
       [(ngModel)]="colour"
     >
       <mat-button-toggle value="All">
@@ -59,7 +62,7 @@
     <app-deck [deck]="deck" [deckInfo]="deckInfo"></app-deck>
 
     <form [formGroup]="form">
-      <mat-form-field>
+      <mat-form-field color="white">
         <input matInput type="text" formControlName="name" placeholder="name" />
       </mat-form-field>
     </form>

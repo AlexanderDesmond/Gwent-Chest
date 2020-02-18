@@ -135,6 +135,7 @@ export class DeckbuilderService {
           if (card.cardType === "Unit") {
             this.deckInfo.unitCount++;
           }
+          this.deckInfo.usedProvisions += card.provision;
 
           return true;
         }
@@ -191,7 +192,7 @@ export class DeckbuilderService {
         name
       ).subscribe(
         data => {
-          this.router.navigate(["/catalogue"]);
+          this.router.navigate(["/"]);
         },
         error => {
           console.log("Problem saving deck to database.");

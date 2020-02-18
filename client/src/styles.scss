@@ -6,5 +6,18 @@ html {
   background-color: #202020;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-form-field-label {
+  color: silver !important;
+}
+.mat-form-field-underline {
+  background-color: silver !important;
+}
