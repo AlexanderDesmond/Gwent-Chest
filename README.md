@@ -8,15 +8,17 @@ An application for creating and managing Gwent decks.
 
 - Angular - Frontend JavaScript Framework
 - Node.js - JavaScript Runtime Environment
-- Express.js - Node.js Framework
+- Express.js - Node.js Web Framework
 
 ### Database
 
 - MongoDB - Database
-- Mongoose
 
-### Libraries
+### Other Libraries and Technologies
 
-- JSON Web Tokens
-- Bcrypt
-- Joi
+- JSON Web Tokens - Authentication / Access
+- Bcrypt - Hashing / Salting
+- Mongoose - Object Data Modeling (ODM) library for MongoDB
+- Joi - Schema Description and Data Validation
+
+## Screenshots and Videos
