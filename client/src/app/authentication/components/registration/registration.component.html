@@ -1,0 +1,39 @@
+<div class="form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <span class="mat-title">Registration</span>
+    <mat-form-field>
+      <input matInput formControlName="username" placeholder="username" />
+
+      <mat-hint align="end">
+        Username must contain at least 4 alphanumeric characters only.
+      </mat-hint>
+      <mat-error *ngIf="username.invalid && username.touched">
+        Username invalid.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="email" placeholder="email" />
+
+      <mat-error *ngIf="email.invalid && email.touched">
+        Invalid email address.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="password" placeholder="password" />
+
+      <mat-hint align="end">
+        Password must be at least 8 characters long.
+      </mat-hint>
+      <mat-error *ngIf="password.invalid && password.touched">
+        Password invalid.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button [disabled]="form.invalid">Register</button>
+    <span
+      >Already have an account? <a [routerLink]="['/login']">Log in.</a>
+    </span>
+  </form>
+</div>

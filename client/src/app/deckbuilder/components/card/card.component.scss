@@ -1,0 +1,36 @@
+.card {
+  position: relative;
+  z-index: 1;
+  display: block;
+
+  .card-tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+
+    background-color: white;
+
+    .card-title {
+      color: white;
+
+      .name {
+        font-weight: bold;
+      }
+
+      span {
+        display: block;
+      }
+    }
+  }
+}
+
+.card:hover > .card-tooltip,
+.card-tooltip > span {
+  display: block;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}

@@ -1,0 +1,103 @@
+<div class="deck-container">
+  <div class="deck-info">
+    <div class="cards">
+      <span>Cards</span>
+      <span
+        >{{ this.deckInfo.cardCount }} / {{ this.deckInfo.minCards }} MIN</span
+      >
+    </div>
+    <div class="units">
+      <span>Units</span>
+      <span
+        >{{ this.deckInfo.unitCount }} / {{ this.deckInfo.minUnits }} MIN</span
+      >
+    </div>
+    <div class="provisions">
+      <span>Provisions</span>
+      <span
+        >{{ this.deckInfo.usedProvisions }} /
+        {{ this.deckInfo.provisions }} MAX</span
+      >
+    </div>
+  </div>
+  <div class="leader-ability" *ngIf="this.deck.leader">
+    <div
+      class="card-preview"
+      [ngStyle]="{
+        'background-image': 'url(' + this.deck.leader.image.thumbnail + ')'
+      }"
+      style="color: gold;"
+    >
+      <span class="leader-name">
+        {{ this.deck.leader.name["en-US"] }}
+      </span>
+      <span class="leader-provisions">
+        {{ this.deck.leader.provisionBoost }}
+      </span>
+      <div class="card-tooltip">
+        <div
+          class="card-title"
+          [ngStyle]="{ backgroundColor: getCardColour(this.deck.leader) }"
+        >
+          <span class="name">{{ this.deck.leader.name["en-US"] }}</span>
+          <span>{{ this.deck.leader.cardType }}</span>
+        </div>
+        <span>{{ this.deck.leader.info["en-US"] }}</span>
+      </div>
+    </div>
+    <ng-container *ngIf="this.deck.strategem">
+      <div
+        class="card-preview"
+        [ngStyle]="{
+          'background-image': 'url(' + this.deck.strategem.image.image + ')'
+        }"
+        style="color: gold;"
+      >
+        <div class="card-info">
+          <span>{{ this.deck.strategem.name["en-US"] }}</span>
+        </div>
+        <div class="card-tooltip">
+          <div
+            class="card-title"
+            [ngStyle]="{ backgroundColor: getCardColour(this.deck.strategem) }"
+          >
+            <span class="name">{{ this.deck.strategem.name["en-US"] }}</span>
+            <span>{{ this.deck.strategem.cardType }}</span>
+          </div>
+
+          <span>{{ this.deck.strategem.info["en-US"] }}</span>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="deck-card-list" *ngIf="this.deck.cards">
+    <ng-container *ngFor="let card of this.deck.cards | filterDeck">
+      <div
+        class="card-preview"
+        (click)="removeCard(card)"
+        [ngStyle]="getCardPreviewStyles(card)"
+        [style.color]="card.type === 'Gold' ? 'gold' : '#cd7f32'"
+      >
+        <div class="card-info">
+          <span>
+            {{ card.strength !== 0 ? card.strength : "⭑" }}
+          </span>
+          <span>{{ card.provision }}</span>
+          <span>{{ card.name["en-US"] }}</span>
+        </div>
+        <div class="duplicate-flag" *ngIf="card.duplicate">x2</div>
+        <div class="card-tooltip">
+          <div
+            class="card-title"
+            [ngStyle]="{ backgroundColor: getCardColour(card) }"
+          >
+            <span class="name">{{ card.name["en-US"] }}</span>
+            <span>{{ card.cardType }}</span>
+          </div>
+          <span>{{ card.info["en-US"] }}</span>
+        </div>
+      </div>
+    </ng-container>
+    <div class="deck-card"></div>
+  </div>
+</div>

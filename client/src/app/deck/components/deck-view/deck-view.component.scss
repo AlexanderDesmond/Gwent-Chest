@@ -1,0 +1,27 @@
+.deck-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: auto;
+
+  .deck-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    color: #e0e0e0;
+
+    h1 {
+      margin-right: 8.5rem;
+    }
+    h2 {
+      margin-left: 8.5rem;
+    }
+  }
+
+  app-deck {
+    width: fit-content;
+  }
+}

@@ -1,0 +1,35 @@
+<div class="deck-catalogue">
+  <mat-button-toggle-group class="deck-filters" value="All">
+    <mat-button-toggle value="All">
+      All
+    </mat-button-toggle>
+    <mat-button-toggle value="Monster">
+      Monsters
+    </mat-button-toggle>
+    <mat-button-toggle value="Nilfgaard">
+      Nilfgaard
+    </mat-button-toggle>
+    <mat-button-toggle value="Northern Realms">
+      Northern Realms
+    </mat-button-toggle>
+    <mat-button-toggle value="Scoiatael">
+      Scoia'tael
+    </mat-button-toggle>
+    <mat-button-toggle value="Skellige">
+      Skellige
+    </mat-button-toggle>
+    <mat-button-toggle value="Syndicate">
+      Syndicate
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <!--
+  <ng-container *ngIf="deckList">
+    <ng-container *ngFor="let deck of deckList | async">
+      <app-deck-preview [deck]="deck"> </app-deck-preview>
+    </ng-container>
+  </ng-container>
+  -->
+
+  <app-deck-table></app-deck-table>
+</div>

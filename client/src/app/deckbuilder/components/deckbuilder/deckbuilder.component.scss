@@ -1,0 +1,60 @@
+.filter {
+  display: flex;
+  justify-content: center;
+
+  //font-size: 1.6rem;
+
+  background-color: white;
+
+  .filter-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    label {
+      margin-bottom: 0.5;
+      font-size: 1.2rem;
+    }
+
+    .filter-buttons {
+      text-align: center;
+    }
+  }
+
+  .toggle-group {
+    margin: 0.5rem;
+    text-align: center;
+  }
+}
+
+.deckbuilder-container {
+  display: flex;
+
+  form > mat-form-field {
+    width: 100%;
+
+    color: #f0f0f0;
+  }
+
+  .save-btn {
+    width: 100%;
+  }
+
+  .deck-error {
+    font-size: 1.2rem;
+  }
+
+  app-cards-list {
+    flex-basis: 80vw;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    margin: auto;
+    padding: 0;
+  }
+}

@@ -1,0 +1,13 @@
+.deck-preview {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  width: 50vw;
+
+  span {
+    margin: 1rem;
+
+    font-size: 1.8rem;
+    color: gold;
+  }
+}

@@ -1,0 +1,144 @@
+<div class="filter">
+  <div class="filter-element filter-faction">
+    <label>Faction</label>
+    <mat-button-toggle-group
+      class="toggle-group faction-toggle"
+      value="All"
+      [(ngModel)]="faction"
+    >
+      <mat-button-toggle value="{{ 'Neutral' + '|' + deck.faction }}">
+        All
+      </mat-button-toggle>
+      <mat-button-toggle value="Neutral">
+        Neutral
+      </mat-button-toggle>
+      <mat-button-toggle value="{{ deck.faction }}">
+        Faction
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="filter-element filter-type">
+    <label>Type</label>
+    <mat-button-toggle-group
+      class="toggle-group type-toggle"
+      value="All"
+      [(ngModel)]="type"
+    >
+      <mat-button-toggle value="All">
+        All
+      </mat-button-toggle>
+      <mat-button-toggle value="Unit">
+        Unit
+      </mat-button-toggle>
+      <mat-button-toggle value="Special">
+        Special
+      </mat-button-toggle>
+      <mat-button-toggle value="Artifact">
+        Artifact
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="filter-element filter-colour">
+    <label>Colour</label>
+    <mat-button-toggle-group
+      class="toggle-group colour-toggle"
+      value="All"
+      [(ngModel)]="colour"
+    >
+      <mat-button-toggle value="All">
+        All
+      </mat-button-toggle>
+      <mat-button-toggle value="Gold">
+        Gold
+      </mat-button-toggle>
+      <mat-button-toggle value="Bronze">
+        Bronze
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+<div class="deckbuilder-container">
+  <div>
+    <app-deck [deck]="deck" [deckInfo]="deckInfo"></app-deck>
+
+    <form [formGroup]="form">
+      <mat-form-field color="white">
+        <input matInput type="text" formControlName="name" placeholder="name" />
+      </mat-form-field>
+    </form>
+    <button class="save-btn" mat-raised-button (click)="saveDeck()">
+      Save
+    </button>
+    <mat-error class="deck-error" *ngIf="!isValidDeck"
+      >A valid deck must contain a leader, a stratagem, at least 25 cards
+      (including at least 13 units), and be within its provision
+      limit.</mat-error
+    >
+  </div>
+
+  <div class="cards-list-container">
+    <div class="cards leaders">
+      <ng-container *ngFor="let key of cardKeys">
+        <ng-container
+          *ngIf="
+            (cards[key].cardType === 'Leader' ||
+              cards[key].cardType === 'Strategem') &&
+            (!this.initialSelection ||
+              cards[key].faction === this.deck.faction ||
+              cards[key].faction === 'Neutral')
+          "
+        >
+          <app-card
+            [card]="cards[key]"
+            [key]="key"
+            (click)="selectCard(cards[key], key)"
+          ></app-card>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <hr />
+    <!--
+    <div class="cards normal-cards" *ngIf="this.deck.leader">
+      <ng-container *ngFor="let key of cardKeys">
+        <ng-container
+          *ngIf="
+            cards[key].cardType !== 'Leader' &&
+            cards[key].cardType !== 'Strategem' &&
+            cards[key].provision !== 0 &&
+            (cards[key].faction === this.deck.faction ||
+              cards[key].secondaryFaction === this.deck.faction ||
+              cards[key].faction === 'Neutral')
+          "
+        >
+          <app-card
+            [card]="cards[key]"
+            [key]="key"
+            (click)="selectCard(cards[key], key)"
+          ></app-card>
+        </ng-container>
+      </ng-container>
+    </div>
+  -->
+
+    <div class="cards normal-cards" *ngIf="this.deck.leader">
+      <ng-container
+        *ngFor="let card of cardsList | filterCards: faction:type:colour"
+      >
+        <ng-container
+          *ngIf="
+            card.data.faction === this.deck.faction ||
+            card.data.secondaryFaction === this.deck.faction ||
+            card.data.faction === 'Neutral'
+          "
+        >
+          <app-card
+            [card]="card.data"
+            [key]="card.id"
+            (click)="selectCard(card.data, card.id)"
+          ></app-card>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</div>

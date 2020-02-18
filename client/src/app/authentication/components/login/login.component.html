@@ -1,0 +1,32 @@
+<div class="form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <span class="mat-title">Login</span>
+    Logged In: {{ isLoggedIn }} Current User: {{ currentUser }}
+    <mat-form-field>
+      <input matInput formControlName="username" placeholder="username" />
+
+      <mat-hint align="end">
+        Username must contain at least 4 alphanumeric characters only.
+      </mat-hint>
+      <mat-error *ngIf="username.invalid && username.touched">
+        Username invalid.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="password" placeholder="password" />
+
+      <mat-hint align="end">
+        Password must be at least 8 characters long.
+      </mat-hint>
+      <mat-error *ngIf="password.invalid && password.touched">
+        Password invalid.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button [disabled]="form.invalid">Login</button>
+    <span
+      >Don't have an account? <a [routerLink]="['/register']">Register here!</a>
+    </span>
+  </form>
+</div>
