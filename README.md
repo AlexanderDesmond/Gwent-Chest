@@ -1,6 +1,6 @@
 # Gwent-Chest
 
-An application for creating and managing Gwent decks.
+A web application for creating and cataloging [Gwent](www.playgwent.com/en) decks.
 
 #### Table of Contents
 
