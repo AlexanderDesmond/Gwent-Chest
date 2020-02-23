@@ -2,7 +2,7 @@
 
 A web application for creating and cataloging [Gwent](https://www.playgwent.com/en "Official Gwent webpage") decks.
 
-#### Table of Contents
+##### Table of Contents
 
 - [Video](#video)
 - [Features](#features)
