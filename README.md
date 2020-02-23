@@ -1,6 +1,6 @@
 # Gwent-Chest
 
-A web application for creating and cataloging [Gwent](www.playgwent.com/en) decks.
+A web application for creating and cataloging [Gwent](https://www.playgwent.com/en "Official Gwent webpage") decks.
 
 #### Table of Contents
 
