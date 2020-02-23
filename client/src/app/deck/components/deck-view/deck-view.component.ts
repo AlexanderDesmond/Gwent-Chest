@@ -11,6 +11,9 @@ export class DeckViewComponent implements OnInit {
   deck;
   id: string;
 
+  upvote: boolean;
+  downvote: boolean;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,

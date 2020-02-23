@@ -9,6 +9,7 @@ import { MatTableModule } from "@angular/material/table";
 // Buttons
 import { MatButtonModule } from "@angular/material/button";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { MatIconModule } from "@angular/material/icon";
 
 // Forms
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -23,7 +24,8 @@ import { MatInputModule } from "@angular/material/input";
     MatToolbarModule,
     MatSidenavModule,
     MatButtonToggleModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ],
   exports: [
     MatFormFieldModule,
@@ -33,7 +35,8 @@ import { MatInputModule } from "@angular/material/input";
     MatToolbarModule,
     MatSidenavModule,
     MatButtonToggleModule,
-    MatTableModule
+    MatTableModule,
+    MatIconModule
   ]
 })
 export class MaterialModule {}
