@@ -21,6 +21,13 @@ A web application for creating and cataloging [Gwent](https://www.playgwent.com/
 
 ### To-Do
 
+- Add upvote/downvote functionality for decks.
+- Add ability for user's to add descriptions to their own decks.
+- Get faction filter on deck catalogue page working.
+- Add user profile page.
+  - Allow users' to change their details.
+  - Allow all users to view a list of a user's submitted decks.
+
 ## Frameworks and Technologies
 
 ### Frameworks
