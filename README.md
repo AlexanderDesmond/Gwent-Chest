@@ -48,6 +48,7 @@ A web application for creating and cataloging [Gwent](https://www.playgwent.com/
   - Deck Name
   - Username of deck creator
 - Client-side pagination for 24, 50 (default), 100, or 250 decks per page.
+- Filter decks visible in data table by faction - WIP
 - Clicking on a deck in the catalogue takes the user to the Deck page, where the user can:
   - View the deck and its constituent cards (with the help of tooltips).
   - Upvote or downvote the deck - WIP
