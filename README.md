@@ -2,6 +2,25 @@
 
 An application for creating and managing Gwent decks.
 
+#### Table of Contents
+
+- [Video](#video)
+- [Features](#features)
+  - [Completed](#completed)
+  - [To-Do](#to-do)
+- [Frameworks and Technologies](#frameworks-and-technologies)
+  - [Frameworks](#frameworks)
+  - [Database](#database)
+  - [Other Libraries and Technologies](#other-libraries-and-technologies)
+
+## Video
+
+## Features
+
+### Completed
+
+### To-Do
+
 ## Frameworks and Technologies
 
 ### Frameworks
@@ -20,5 +39,3 @@ An application for creating and managing Gwent decks.
 - Bcrypt - Hashing / Salting
 - Mongoose - Object Data Modeling (ODM) library for MongoDB
 - Joi - Schema Description and Data Validation
-
-## Screenshots and Videos
