@@ -15,7 +15,7 @@ A web application for creating and cataloging [Gwent](https://www.playgwent.com/
 
 ## Video
 
-[![](images/GwentChest_home.png)](https://youtu.be/_775TpI--SU)
+[![Link to YouTube video](images/GwentChest_home.png)](https://youtu.be/_775TpI--SU "Link to YouTube video")
 
 ## Features
 
