@@ -23,7 +23,7 @@ app.use("/", routes);
 
 // Connect to database.
 Mongoose.connect(
-  process.env.TEST_MONGO_URI,
+  process.env.MONGO_URI,
   { useNewUrlParser: true, useUnifiedTopology: true },
   () => {
     console.log("Connected to database...");

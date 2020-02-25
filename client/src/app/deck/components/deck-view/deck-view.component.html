@@ -1,12 +1,31 @@
 <div class="deck-container">
-  <div class="deck-title">
-    <h1>{{ deck?.name }}</h1>
-    <h2>{{ deck?.username }}</h2>
-  </div>
-
   <app-deck
     *ngIf="deck"
     [deck]="deck.deck"
     [deckInfo]="deck.deck.info"
   ></app-deck>
+
+  <div class="deck-content">
+    <div class="deck-title">
+      <div class="voting">
+        <span>{{ deck?.points }}</span>
+        <button mat-icon-button>
+          <mat-icon>expand_less</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>expand_more</mat-icon>
+        </button>
+      </div>
+      <h1>{{ deck?.name }}</h1>
+      <h2>{{ deck?.username }}</h2>
+    </div>
+    <div class="description">
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+      <div>
+        description yo
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,8 +1,7 @@
 .deck-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   margin: auto;
 
@@ -13,15 +12,26 @@
 
     color: #e0e0e0;
 
-    h1 {
-      margin-right: 8.5rem;
+    .voting {
+      align-self: center;
+      margin-right: 1rem;
+      font-size: 1.6rem;
     }
+
+    .deck-content,
+    h1,
     h2 {
-      margin-left: 8.5rem;
+      margin-right: 1rem;
     }
   }
 
   app-deck {
     width: fit-content;
+
+    margin-right: 5rem;
+  }
+
+  .deck-content {
+    margin-top: 1.5rem;
   }
 }
