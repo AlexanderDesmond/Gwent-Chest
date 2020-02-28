@@ -1,4 +1,4 @@
-# Gwent-Chest
+# Gwent Chest
 
 A web application for creating and cataloging [Gwent](https://www.playgwent.com/en "Official Gwent webpage") decks.
 
